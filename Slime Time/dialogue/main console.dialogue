@@ -1,0 +1,31 @@
+~ Start
+
+Main Console (S.A.D.): USELESS!
+
+=> END
+
+~ miniConsole1
+
+Tip: Press E when you have 3 slime to convert them to energy!
+
+=> END
+
+
+~ StopIt
+
+Main Console (S.A.D.): What?
+	Don't expect anything from me, you've barely even left this room.
+
+=> END
+
+~ GreenDoor
+
+Security: You need a green key to access this door.
+
+=> END
+
+~ redDoor
+
+Security: You need a red key to access this door.
+
+=> END

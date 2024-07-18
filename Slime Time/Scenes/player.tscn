@@ -1,0 +1,119 @@
+[gd_scene load_steps=8 format=3 uid="uid://drry4i6y4l68p"]
+
+[ext_resource type="Texture2D" uid="uid://03rntl40nf4h" path="res://World tiles/pulp-tile-0-layer-Player-fps-3-count-2-table-8-8.png" id="1_ekv7k"]
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_lexae"]
+[ext_resource type="FontFile" uid="uid://dk3pq1g2f4itn" path="res://fonts/PixelOperator8.ttf" id="3_u87qb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kfit1"]
+atlas = ExtResource("1_ekv7k")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w2mea"]
+atlas = ExtResource("1_ekv7k")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n356m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kfit1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w2mea")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d46as"]
+size = Vector2(7, 7)
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+z_index = 1
+input_pickable = true
+floor_stop_on_slope = false
+floor_constant_speed = true
+floor_snap_length = 8.0
+script = ExtResource("1_lexae")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(2.98023e-08, 2.98023e-08)
+scale = Vector2(0.875, 0.875)
+sprite_frames = SubResource("SpriteFrames_n356m")
+autoplay = "default"
+frame_progress = 0.0140698
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_d46as")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(8, 8)
+
+[node name="Container" type="Control" parent="Camera2D"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -72.0
+offset_top = -40.0
+offset_right = 72.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Polygon2D" type="Polygon2D" parent="Camera2D/Container"]
+position = Vector2(-3.3371, -0.165726)
+scale = Vector2(4.38493, 0.375808)
+color = Color(0, 0, 0, 0.164706)
+polygon = PackedVector2Array(-0.151176, 21.7285, 33.8288, 21.7285, 33.8288, -2.21995, -0.151176, -2.21995)
+
+[node name="EnergyLabel" type="RichTextLabel" parent="Camera2D/Container"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 136.0
+offset_bottom = 10.0
+scale = Vector2(0.529785, 0.701071)
+theme_override_colors/default_color = Color(0.415686, 0, 1, 1)
+theme_override_fonts/normal_font = ExtResource("3_u87qb")
+theme_override_font_sizes/normal_font_size = 8
+text = "Energy: "
+
+[node name="ShieldLabel" type="RichTextLabel" parent="Camera2D/Container"]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 1.0
+offset_right = 170.0
+offset_bottom = 10.0
+scale = Vector2(0.529785, 0.701071)
+theme_override_colors/default_color = Color(0.415686, 0, 1, 1)
+theme_override_fonts/normal_font = ExtResource("3_u87qb")
+theme_override_font_sizes/normal_font_size = 8
+text = "Shield: "
+
+[node name="SmileLabel" type="RichTextLabel" parent="Camera2D/Container"]
+layout_mode = 0
+offset_left = 73.0
+offset_top = 1.0
+offset_right = 194.0
+offset_bottom = 10.0
+scale = Vector2(0.528424, 0.698628)
+theme_override_colors/default_color = Color(0.415686, 0, 1, 1)
+theme_override_fonts/normal_font = ExtResource("3_u87qb")
+theme_override_font_sizes/normal_font_size = 8
+text = "Smiles:  "
+
+[node name="SlimeLabel" type="RichTextLabel" parent="Camera2D/Container"]
+layout_mode = 0
+offset_left = 111.0
+offset_top = 1.0
+offset_right = 203.0
+offset_bottom = 10.0
+scale = Vector2(0.531728, 0.677514)
+theme_override_colors/default_color = Color(0.415686, 0, 1, 1)
+theme_override_fonts/normal_font = ExtResource("3_u87qb")
+theme_override_font_sizes/normal_font_size = 8
+text = "Slime: "

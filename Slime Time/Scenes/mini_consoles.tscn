@@ -1,0 +1,93 @@
+[gd_scene load_steps=15 format=3 uid="uid://hhujl5qojlpw"]
+
+[ext_resource type="Texture2D" uid="uid://dov5ql17qmqtp" path="res://pulp-tiles/pulp-tile-1-layer-Sprites-fps-5-count-8-table-8-8.png" id="1_papdo"]
+[ext_resource type="Script" path="res://Scripts/miniConsole.gd" id="2_v65ho"]
+[ext_resource type="Resource" uid="uid://8xsj1vfcrob6" path="res://dialogue/main console.dialogue" id="3_0lqwv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ct2on"]
+atlas = ExtResource("1_papdo")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_byvuk"]
+atlas = ExtResource("1_papdo")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qhd0c"]
+atlas = ExtResource("1_papdo")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f5vrs"]
+atlas = ExtResource("1_papdo")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lumtl"]
+atlas = ExtResource("1_papdo")
+region = Rect2(32, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w3if3"]
+atlas = ExtResource("1_papdo")
+region = Rect2(40, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_80dvh"]
+atlas = ExtResource("1_papdo")
+region = Rect2(48, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q20rb"]
+atlas = ExtResource("1_papdo")
+region = Rect2(56, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hfvlq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ct2on")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_byvuk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qhd0c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f5vrs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lumtl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w3if3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_80dvh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q20rb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yswec"]
+size = Vector2(10, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c3ibj"]
+size = Vector2(8, 8)
+
+[node name="mini consoles" type="StaticBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_hfvlq")
+frame_progress = 0.940235
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("2_v65ho")
+dialogueResource = ExtResource("3_0lqwv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_yswec")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_c3ibj")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

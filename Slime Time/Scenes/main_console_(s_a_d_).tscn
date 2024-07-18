@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=3 uid="uid://msssycwbd4pp"]
+
+[ext_resource type="Script" path="res://Scripts/main_console_(s_a_d_).gd" id="1_5hq0w"]
+[ext_resource type="Texture2D" uid="uid://b6112k31bc4uo" path="res://World tiles/pulp-tile-14-layer-Sprites-fps-5-count-2-table-8-8.png" id="2_5r7j7"]
+[ext_resource type="Resource" uid="uid://8xsj1vfcrob6" path="res://dialogue/main console.dialogue" id="2_6dhoh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3vgx5"]
+atlas = ExtResource("2_5r7j7")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5cu7b"]
+atlas = ExtResource("2_5r7j7")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_41hhb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3vgx5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5cu7b")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7nvm6"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fg2r3"]
+size = Vector2(16, 16)
+
+[node name="Main Console (S_A_D_)" type="StaticBody2D"]
+script = ExtResource("1_5hq0w")
+dialogueResource = ExtResource("2_6dhoh")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-3.57628e-07, -3.57628e-07)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_41hhb")
+autoplay = "default"
+frame_progress = 0.178142
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_7nvm6")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(1.01, 1.01)
+shape = SubResource("RectangleShape2D_fg2r3")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
